@@ -9,7 +9,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage escenario) throws Exception {
-        Scene scena = new Scene(new Pane(), 500, 800); // cambia el ancho y el alto del contenedor del juego, es la clase principal
+        Scene scena = new Scene(new PanelRaiz(), 500, 800); // cambia el ancho y el alto del contenedor del juego, es la clase principal
         escenario.setScene(scena);
         escenario.show();
 

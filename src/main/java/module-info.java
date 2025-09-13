@@ -9,6 +9,7 @@ module org.gorditodev.juegodisparosdemo {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
+    requires java.desktop;
 
     opens org.gorditodev.juegodisparosdemo to javafx.fxml;
     exports org.gorditodev.juegodisparosdemo;
