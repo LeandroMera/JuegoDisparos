@@ -1,20 +1,69 @@
 package org.gorditodev.juegodisparosdemo;
 
+import javafx.animation.AnimationTimer;
+import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import java.awt.*;
 
 
-
-
 public class PJ extends Rectangle {
 
     private  PanelJuego panel;
+    private boolean moviendoIzquierda, moviendoDerecha;
 
     public PJ() {
-        super(250, 700, 50, 50);
-        panel = PanelJuego.getPanel();
+        super(225, 700, 50, 50);
         setFill(Color.RED);// aveces sale erro por no importar la libreria -> import javafx.scene.paint.Color;
+        ponerEnAccion();
+        animarPJ();
+    }
+    private void ponerEnAccion() {
+        sceneProperty().addListener((observar, antiguaEscena, nuevaEscena) -> {
+           if(nuevaEscena != null){
+               requestFocus();
+           }
+        });
+
+        this.setOnKeyPressed(e ->{
+            if(e.getCode() == KeyCode.A || e.getCode() == KeyCode.LEFT){
+                moviendoIzquierda = true;
+            }
+
+            if(e.getCode() == KeyCode.D || e.getCode() == KeyCode.RIGHT){
+                moviendoDerecha= true;
+            }
+        });
+
+        this.setOnKeyReleased(e ->{
+            if(e.getCode() == KeyCode.A || e.getCode() == KeyCode.LEFT){
+                moviendoIzquierda = false;
+            }
+
+            if(e.getCode() == KeyCode.D || e.getCode() == KeyCode.RIGHT){
+                moviendoDerecha= false;
+            }
+        });
+    }
+
+    private void mover(){
+        panel = PanelJuego.getPanel();
+        if(moviendoIzquierda && getBoundsInParent().getMinX() > 0){
+            setLayoutX(getLayoutX() - 3);
+        }
+        if(moviendoDerecha && getBoundsInParent().getMaxX() < panel.getWidth()){
+            setLayoutX(getLayoutX() + 3);
+        }
+    }
+
+    private void animarPJ() {
+        AnimationTimer t = new AnimationTimer() {
+            @Override
+            public void handle(long ahora) {
+                mover();
+            }
+        };
+        t.start();// sino se mueve puede ser que olvidaste esta linea, crvg
     }
 
 
