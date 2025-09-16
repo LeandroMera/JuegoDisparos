@@ -7,8 +7,8 @@ public class PanelJuego extends Pane {
     private static PanelJuego panel;
     private PJ pj;
     public PanelJuego() {
-        pj = new PJ();
         panel = this;
+        pj = new PJ();
         montarEscena();
     }
     private void montarEscena() {

@@ -1,6 +1,7 @@
 package org.gorditodev.juegodisparosdemo;
 
 import javafx.animation.AnimationTimer;
+import javafx.geometry.Bounds;
 import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
@@ -14,10 +15,12 @@ public class PJ extends Rectangle {
 
     public PJ() {
         super(225, 700, 50, 50);
+        panel = PanelJuego.getPanel();
         setFill(Color.RED);// aveces sale erro por no importar la libreria -> import javafx.scene.paint.Color;
         ponerEnAccion();
         animarPJ();
     }
+
     private void ponerEnAccion() {
         sceneProperty().addListener((observar, antiguaEscena, nuevaEscena) -> {
            if(nuevaEscena != null){
@@ -43,11 +46,21 @@ public class PJ extends Rectangle {
             if(e.getCode() == KeyCode.D || e.getCode() == KeyCode.RIGHT){
                 moviendoDerecha= false;
             }
+
+            if(e.getCode() == KeyCode.SPACE) disparar();// lisener para el boton de disparar
         });
     }
 
+    private void disparar() {
+        if(Disparo.getNDisparos() <= 5 ){//con esta condional limitamos los disparos a 5 y hasta que no salga de pantalla no vuelve a disparar
+            Bounds posPJ = this.getBoundsInParent();
+            Disparo d = new Disparo(posPJ.getCenterX(), posPJ.getMinY());
+            panel.getChildren().add(d);
+        }
+    }
+
     private void mover(){
-        panel = PanelJuego.getPanel();
+        //panel = PanelJuego.getPanel();
         if(moviendoIzquierda && getBoundsInParent().getMinX() > 0){
             setLayoutX(getLayoutX() - 3);
         }
