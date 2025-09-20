@@ -4,6 +4,8 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
+
 public class Disparo extends Rectangle {
 
     private PanelJuego panel;
@@ -27,7 +29,23 @@ public class Disparo extends Rectangle {
             public void handle(long ahora) {
                 setLayoutY(getLayoutY() - 7);
                 if(getBoundsInParent().getMaxY() <= 0) enPantalla = false;//Controla para eliminar el disparo para no usar mas recursos
+//Gestion de impactos y eliminacion de enemigos
+                ArrayList<EnemigoAbs> enemigos = GestionEnemigos.getEnemigos();
+                for(int i = 0; i<enemigos.size(); i++){
+                    EnemigoAbs e = enemigos.get(i);
 
+                    if(getBoundsInParent().intersects(e.getBoundsInParent())){
+                        enPantalla = false;
+                        e.reducirVida();
+
+                        if(e.getVida()<= 0){
+                            e.getAnimador().stop();
+                            panel.getChildren().remove(e);
+                            enemigos.remove(e);
+                        }
+                    }
+                }
+/// /////
                 if(!enPantalla) {
                     nDisparos--;
                     t.stop();

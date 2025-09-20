@@ -10,6 +10,7 @@ public class PanelJuego extends Pane {
         panel = this;
         pj = new PJ();
         montarEscena();
+        GestionEnemigos.comenzar();
     }
     private void montarEscena() {
         //anadir personaje al panel
