@@ -10,7 +10,14 @@ module org.gorditodev.juegodisparosdemo {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires java.desktop;
+    requires javafx.graphics;
 
     opens org.gorditodev.juegodisparosdemo to javafx.fxml;
     exports org.gorditodev.juegodisparosdemo;
+    exports org.gorditodev.juegodisparosdemo.vista;
+    opens org.gorditodev.juegodisparosdemo.vista to javafx.fxml;
+    exports org.gorditodev.juegodisparosdemo.enemigos;
+    opens org.gorditodev.juegodisparosdemo.enemigos to javafx.fxml;
+    exports org.gorditodev.juegodisparosdemo.utiles;
+    opens org.gorditodev.juegodisparosdemo.utiles to javafx.fxml;
 }

@@ -1,17 +1,18 @@
-package org.gorditodev.juegodisparosdemo;
+package org.gorditodev.juegodisparosdemo.utiles;
 
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Bounds;
 import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
-import java.awt.*;
+import org.gorditodev.juegodisparosdemo.vista.PanelJuego;
 
 
 public class PJ extends Rectangle {
 
-    private  PanelJuego panel;
+    private PanelJuego panel;
     private boolean moviendoIzquierda, moviendoDerecha;
+    private static Bounds posicion;
 
     public PJ() {
         super(225, 700, 50, 50);
@@ -52,7 +53,7 @@ public class PJ extends Rectangle {
     }
 
     private void disparar() {
-        if(Disparo.getNDisparos() <= 5 ){//con esta condional limitamos los disparos a 5 y hasta que no salga de pantalla no vuelve a disparar
+        if(Disparo.getNDisparos() < 3 ){//con esta condional limitamos los disparos a 5 y hasta que no salga de pantalla no vuelve a disparar
             Bounds posPJ = this.getBoundsInParent();
             Disparo d = new Disparo(posPJ.getCenterX(), posPJ.getMinY());
             panel.getChildren().add(d);
@@ -74,9 +75,14 @@ public class PJ extends Rectangle {
             @Override
             public void handle(long ahora) {
                 mover();
+                posicion = getBoundsInParent();
             }
         };
         t.start();// sino se mueve puede ser que olvidaste esta linea, crvg
+    }
+
+    public static Bounds getPosicion() {
+        return posicion;
     }
 
 

@@ -1,6 +1,8 @@
-package org.gorditodev.juegodisparosdemo;
+package org.gorditodev.juegodisparosdemo.vista;
 
 import javafx.scene.layout.Pane;
+import org.gorditodev.juegodisparosdemo.utiles.GestionEnemigos;
+import org.gorditodev.juegodisparosdemo.utiles.PJ;
 
 public class PanelJuego extends Pane {
 

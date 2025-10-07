@@ -1,8 +1,10 @@
-package org.gorditodev.juegodisparosdemo;
+package org.gorditodev.juegodisparosdemo.utiles;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import org.gorditodev.juegodisparosdemo.enemigos.EnemigoAbs;
+import org.gorditodev.juegodisparosdemo.vista.PanelJuego;
 
 import java.util.ArrayList;
 
@@ -42,6 +44,9 @@ public class Disparo extends Rectangle {
                             e.getAnimador().stop();
                             panel.getChildren().remove(e);
                             enemigos.remove(e);
+
+                            Puntuacion.subirPuntuacion(e.getPuntuacion());
+                            Puntuacion.aumentarMultiplicador(true);
                         }
                     }
                 }
