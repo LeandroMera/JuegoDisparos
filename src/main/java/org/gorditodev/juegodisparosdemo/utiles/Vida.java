@@ -3,8 +3,10 @@ package org.gorditodev.juegodisparosdemo.utiles;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import org.gorditodev.juegodisparosdemo.enemigos.EnemigoAbs;
 import org.gorditodev.juegodisparosdemo.vista.PanelInferior;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Vida extends Rectangle {
@@ -28,13 +30,27 @@ public class Vida extends Rectangle {
         for (int i=0; i<3; i++) vidas.add(new Vida());
     }
 
-    public static void reducirVida(){
+    public static void reducirVida() throws SQLException, InterruptedException {
         if(indiceActual >= 0 ){
             Vida v = vidas.get(indiceActual);
-            PanelInferior.getPanel().getChildren().remove(v);
+            PanelInferior.getPanel().getHBox().getChildren().remove(v);
             vidas.remove(indiceActual);
             indiceActual--;
-            Puntuacion.aumentarMultiplicador(false);
+            EtPuntuacion.aumentarMultiplicador(false);
+
+            if (indiceActual == -1) perder();
         }
+
     }
+
+    private static void perder() {
+            ConexionBBDD.enviarPuntuacion();
+                GestionEscenas.escenaPuntos();
+                GestionEnemigos.reiniciar();
+                EtPuntuacion.reiniciar();
+                ContadorTiempo.reiniciar();
+                EnemigoAbs.reiniciar();
+                vidas=null;
+                indiceActual=2;
+        }
 }

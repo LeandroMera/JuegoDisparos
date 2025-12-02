@@ -11,6 +11,8 @@ module org.gorditodev.juegodisparosdemo {
     requires com.almasb.fxgl.all;
     requires java.desktop;
     requires javafx.graphics;
+    requires java.sql;
+    // requires org.gorditodev.juegodisparosdemo;
 
     opens org.gorditodev.juegodisparosdemo to javafx.fxml;
     exports org.gorditodev.juegodisparosdemo;

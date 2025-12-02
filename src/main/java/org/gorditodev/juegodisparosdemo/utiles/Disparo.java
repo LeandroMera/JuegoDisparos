@@ -14,10 +14,10 @@ public class Disparo extends Rectangle {
     private AnimationTimer t;
     private boolean enPantalla;//booleano para controlar los disparos y asi se eliminen para que no consuma mas recursos
     private static int nDisparos = 0;// limite de disparos
-
+    private static double ancho = 3;
 
     public Disparo(double posX, double posY) {
-       super(posX, posY -25, 3, 25);//Tamaño del obj y posicion correcta del laser
+       super(posX-1.5, posY -25, ancho, 25);//Tamaño del obj y posicion correcta del laser
        nDisparos++;// iniciamos contador de disparos
        panel = PanelJuego.getPanel();
        enPantalla = true;
@@ -45,8 +45,8 @@ public class Disparo extends Rectangle {
                             panel.getChildren().remove(e);
                             enemigos.remove(e);
 
-                            Puntuacion.subirPuntuacion(e.getPuntuacion());
-                            Puntuacion.aumentarMultiplicador(true);
+                            EtPuntuacion.subirPuntuacion(e.getPuntuacion());
+                            EtPuntuacion.aumentarMultiplicador(true);
                         }
                     }
                 }
@@ -63,5 +63,9 @@ public class Disparo extends Rectangle {
 
     public static int getNDisparos() {
         return nDisparos;
+    }
+
+    public static void aumentarAncho (){
+        ancho += 1;
     }
 }

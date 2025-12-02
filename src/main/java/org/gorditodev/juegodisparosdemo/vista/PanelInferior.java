@@ -5,21 +5,24 @@ import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import org.gorditodev.juegodisparosdemo.utiles.ContadorTiempo;
-import org.gorditodev.juegodisparosdemo.utiles.Puntuacion;
+import org.gorditodev.juegodisparosdemo.utiles.EtPuntuacion;
 import org.gorditodev.juegodisparosdemo.utiles.Vida;
 
 import java.util.ArrayList;
 
-public class PanelInferior extends HBox {
-    private Puntuacion puntos;
+public class PanelInferior extends StackPane {
+    private EtPuntuacion puntos;
     private ArrayList<Vida> vidas;
     private static PanelInferior panel;
+    private static HBox hBox;
 
     public PanelInferior() {
-        puntos = Puntuacion.getPuntuacion();
+        puntos = EtPuntuacion.getPuntuacion();
         vidas = Vida.getVidas();
-        setStyle("-fx-background-color: #DED8D7");
+        hBox = new HBox(10);
+        setStyle("-fx-background-color: #efe9e9");
         montarEscena();
         panel = this;
         //HBox puntuaciones = new HBox();
@@ -31,12 +34,19 @@ public class PanelInferior extends HBox {
         Region espacio2 = new Region();
         HBox.setHgrow(espacio2, Priority.ALWAYS);
 
-        for(Vida v : vidas) getChildren().add(v);
-        getChildren().addAll((Node) espacio, ContadorTiempo.getContador(), espacio2, puntos);
-        setAlignment(Pos.CENTER);
+        for(Vida v : vidas) hBox.getChildren().add(v);
+        hBox.getChildren().addAll((Node) espacio, ContadorTiempo.getContador(), espacio2, puntos);
+        hBox.setAlignment(Pos.CENTER);
+
+        getChildren().addAll(hBox, ContadorTiempo.getContador());
+        StackPane.setAlignment(ContadorTiempo.getContador(), Pos.CENTER);
     }
 
     public static PanelInferior getPanel(){
         return panel;
+    }
+
+    public HBox getHBox(){
+        return hBox;
     }
 }

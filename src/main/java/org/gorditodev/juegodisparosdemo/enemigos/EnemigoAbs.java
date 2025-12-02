@@ -8,6 +8,8 @@ import org.gorditodev.juegodisparosdemo.utiles.PJ;
 import org.gorditodev.juegodisparosdemo.utiles.Vida;
 import org.gorditodev.juegodisparosdemo.vista.PanelJuego;
 
+import java.sql.SQLException;
+
 public abstract class EnemigoAbs extends Rectangle {
 
     protected PanelJuego panel;
@@ -48,9 +50,15 @@ public abstract class EnemigoAbs extends Rectangle {
         if (getBoundsInParent().getMaxY() >= panel.getHeight() || getBoundsInParent().intersects(PJ.getPosicion())) {// ase desaparecer el enemigo
             panel.getChildren().remove(this);// controla para desaparecer se especifica con this para decir que es esta clase
             GestionEnemigos.getEnemigos().remove(this);
-            Vida.reducirVida();
-
+            try {
+                Vida.reducirVida();
+            } catch (java.sql.SQLException | InterruptedException e) {
+                e.printStackTrace();
+            }
             t.stop();
         }
+    }
+    public static void reiniciar() {
+        dificultad = 0;
     }
 }

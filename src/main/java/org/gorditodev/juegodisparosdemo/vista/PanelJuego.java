@@ -2,6 +2,7 @@ package org.gorditodev.juegodisparosdemo.vista;
 
 import javafx.scene.layout.Pane;
 import org.gorditodev.juegodisparosdemo.utiles.GestionEnemigos;
+import org.gorditodev.juegodisparosdemo.utiles.GestionObjetos;
 import org.gorditodev.juegodisparosdemo.utiles.PJ;
 
 public class PanelJuego extends Pane {
@@ -13,6 +14,7 @@ public class PanelJuego extends Pane {
         pj = new PJ();
         montarEscena();
         GestionEnemigos.comenzar();
+        GestionObjetos.comenzar();
     }
     private void montarEscena() {
         //anadir personaje al panel

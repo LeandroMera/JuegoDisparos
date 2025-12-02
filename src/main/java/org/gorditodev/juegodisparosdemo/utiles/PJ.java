@@ -13,6 +13,8 @@ public class PJ extends Rectangle {
     private PanelJuego panel;
     private boolean moviendoIzquierda, moviendoDerecha;
     private static Bounds posicion;
+    private static int nDisparos = 3;
+
 
     public PJ() {
         super(225, 700, 50, 50);
@@ -53,7 +55,7 @@ public class PJ extends Rectangle {
     }
 
     private void disparar() {
-        if(Disparo.getNDisparos() < 3 ){//con esta condional limitamos los disparos a 5 y hasta que no salga de pantalla no vuelve a disparar
+        if(Disparo.getNDisparos() < nDisparos ){
             Bounds posPJ = this.getBoundsInParent();
             Disparo d = new Disparo(posPJ.getCenterX(), posPJ.getMinY());
             panel.getChildren().add(d);
@@ -82,8 +84,12 @@ public class PJ extends Rectangle {
     }
 
     public static Bounds getPosicion() {
+
         return posicion;
     }
 
+    public static void aumentarDisparos(){
+        nDisparos++;
+    }
 
 }

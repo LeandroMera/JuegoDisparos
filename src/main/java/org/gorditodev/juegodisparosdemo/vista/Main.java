@@ -3,20 +3,26 @@ package org.gorditodev.juegodisparosdemo.vista;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.gorditodev.juegodisparosdemo.utiles.GestionEscenas;
 
 public class Main extends Application {
 
+    private static Stage escenario;
+
     @Override
     public void start(Stage escenario) throws Exception {
-        Scene scena = new Scene(new PanelRaiz(), 500, 800); // cambia el ancho y el alto del contenedor del juego, es la clase principal
-        escenario.setScene(scena);
+        this.escenario = escenario;
+        GestionEscenas.escenaMenu();
         escenario.show();
 
     }
 
     public static void main(String[] args) {
-
         launch(args);
+    }
+
+    public static Stage getEscenario() {
+        return escenario;
     }
 
 

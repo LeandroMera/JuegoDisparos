@@ -3,6 +3,7 @@ package org.gorditodev.juegodisparosdemo.utiles;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 public class ContadorTiempo {
@@ -14,6 +15,7 @@ public class ContadorTiempo {
 
     private ContadorTiempo() {
         etiqueta = new Label();
+        etiqueta.setFont(new Font("Consolas", 30));
         actEtiqueta();
 
         tl = new Timeline(new KeyFrame(Duration.seconds(1), e-> {
@@ -27,11 +29,14 @@ public class ContadorTiempo {
         empezar();
     }
 
-    private static void actEtiqueta() {
+    public static String formatoContador(){
         int minutos = segundos/60;  // obtenemos los minutis
         int segundosF = segundos%60; // obtenemos los segundos
-        etiqueta.setText(String.format("%02d:%02d", minutos, segundosF));// Actualiza cada segundo el tiempo, debes hacer las etiquetas para minutos y segundos
+        return String.format("%02d:%02d", minutos, segundosF);
+    }
 
+    private static void actEtiqueta() {
+        etiqueta.setText(formatoContador());
     }
 
     public static void empezar(){
@@ -40,5 +45,15 @@ public class ContadorTiempo {
 
     public static Label getContador(){
         return etiqueta;
+    }
+
+    public static int getSegundos(){
+        return segundos;
+    }
+
+    public  static void reiniciar(){
+        tl.stop();
+        segundos = 0;
+        actEtiqueta();
     }
 }

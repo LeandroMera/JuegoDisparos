@@ -54,5 +54,20 @@ public class GestionEnemigos {
     public static ArrayList<EnemigoAbs> getEnemigos(){
         return enemigos;
     }
+
+    public static void reiniciar(){
+        t.stop();
+        while (enemigos.size() > 0){
+            for(int i = 0; i < enemigos.size(); i++){
+                EnemigoAbs e = enemigos.get(i);
+                e.getAnimador().stop();
+                panel.getChildren().remove(e);
+                getEnemigos().remove(e);
+            }
+        }
+        tAparicion = 2_000_000_000;
+    }
+
+
 }
 
