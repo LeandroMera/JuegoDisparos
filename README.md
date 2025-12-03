@@ -35,36 +35,7 @@ Este proyecto combina programación orientada a objetos, gestión de escenas, ti
   
   Actualización constante con AnimationTimer.
 
-🧱 Arquitectura del proyecto
-          src/main/java/
-        └── org.gorditodev.juegodisparosdemo
-            ├── utiles/
-               ├── ConexionBBDD.java
-               ├── ContadorTiempo.java
-               ├── Disparo.java
-               ├── EtPuntuacion.java
-               ├── GestionEnemigos.java
-               ├── GestionEscenas.java
-               ├── GestionObjetos.java
-               ├── ObjMejora.java
-               ├── PJ.java
-               ├── Puntuacion.java
-               └── Vida.java
-            
-            └── vista/
-                ├── Main.java
-                ├── MenuInicio.java
-                ├── PanelInferior.java
-                ├── PanelJuego.java
-                ├── PanelPuntuaciones.java
-                ├── PanelRaiz.java
-                ├── HelloApplication.java
-                └── HelloController.java
-        
-        src/main/resources/
-        └── img/
-            ├── fondo.png
-            └── fondo2.png
+
 🕹️ Cómo jugar
 
     1.- Inicia el juego desde el menú principal.
@@ -88,6 +59,20 @@ Este proyecto combina programación orientada a objetos, gestión de escenas, ti
   Programación orientada a objetos (POO)
   
   Animaciones con AnimationTimer
+
+🔥 Mejoras futuras sugeridas
+
+  Sistema de niveles
+  
+  Más tipos de enemigos
+  
+  Sonidos y música
+  
+  Barra de energía o escudo
+  
+  Power-ups temporales
+  
+  Menú avanzado con configuraciones
 
   👤 Autor
 
