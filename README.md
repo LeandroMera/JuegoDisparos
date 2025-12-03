@@ -39,18 +39,18 @@ Este proyecto combina programación orientada a objetos, gestión de escenas, ti
           src/main/java/
         └── org.gorditodev.juegodisparosdemo
             ├── utiles/
-            │   ├── ConexionBBDD.java
-            │   ├── ContadorTiempo.java
-            │   ├── Disparo.java
-            │   ├── EtPuntuacion.java
-            │   ├── GestionEnemigos.java
-            │   ├── GestionEscenas.java
-            │   ├── GestionObjetos.java
-            │   ├── ObjMejora.java
-            │   ├── PJ.java
-            │   ├── Puntuacion.java
-            │   └── Vida.java
-            │
+               ├── ConexionBBDD.java
+               ├── ContadorTiempo.java
+               ├── Disparo.java
+               ├── EtPuntuacion.java
+               ├── GestionEnemigos.java
+               ├── GestionEscenas.java
+               ├── GestionObjetos.java
+               ├── ObjMejora.java
+               ├── PJ.java
+               ├── Puntuacion.java
+               └── Vida.java
+            
             └── vista/
                 ├── Main.java
                 ├── MenuInicio.java
