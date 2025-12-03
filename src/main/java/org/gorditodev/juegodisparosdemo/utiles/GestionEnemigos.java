@@ -38,7 +38,7 @@ public class GestionEnemigos {
                     enemigos.add(e2);//añade a arraylist el nemigo zig
                     panel.getChildren().addAll(e, e2);
 //Aparicion de el enemigo jefe 1
-                    if(tAparicion < 1_000_000_000  && Math.random() > 0.95) {
+                    if(tAparicion > 1_000_000_000  && Math.random() > 0.95) {
                         EnemigoAbs e3 = new EnemigoJefe();
                         enemigos.add(e3);
                         panel.getChildren().add(e3);

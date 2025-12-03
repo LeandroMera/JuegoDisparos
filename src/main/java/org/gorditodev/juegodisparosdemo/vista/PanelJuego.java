@@ -10,6 +10,9 @@ public class PanelJuego extends Pane {
     private static PanelJuego panel;
     private PJ pj;
     public PanelJuego() {
+        widthProperty().addListener((obs, oldV, newV) -> montarEscena());
+        heightProperty().addListener((obs, oldV, newV) -> montarEscena());
+
         panel = this;
         pj = new PJ();
         montarEscena();
@@ -18,11 +21,19 @@ public class PanelJuego extends Pane {
     }
     private void montarEscena() {
         //anadir personaje al panel
+        String bg = getClass().getResource("/img/fondo.png").toExternalForm();
+        setStyle("-fx-background-image: url('" + bg + "');" +
+                "-fx-background-size: cover;" +
+                "-fx-background-repeat: no-repeat;" +
+                "-fx-background-position: center;");
         getChildren().add(pj);
 
     }
+
+
 
     public static PanelJuego getPanel() {
         return panel;
     }
 }
+

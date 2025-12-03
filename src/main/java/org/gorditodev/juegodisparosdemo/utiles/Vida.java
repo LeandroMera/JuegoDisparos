@@ -45,6 +45,11 @@ public class Vida extends Rectangle {
 
     private static void perder() {
             ConexionBBDD.enviarPuntuacion();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 GestionEscenas.escenaPuntos();
                 GestionEnemigos.reiniciar();
                 EtPuntuacion.reiniciar();

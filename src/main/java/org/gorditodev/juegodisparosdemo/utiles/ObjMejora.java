@@ -3,6 +3,7 @@ package org.gorditodev.juegodisparosdemo.utiles;
 import javafx.animation.AnimationTimer;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import org.gorditodev.juegodisparosdemo.vista.PanelJuego;
 
@@ -13,8 +14,9 @@ public class ObjMejora extends Rectangle {
     private AnimationTimer t;
 
     public ObjMejora() {
-        super(Math.random()*70, -30, 30, 30);
-        setFill(Color.GOLD);
+        super(Math.random()*70, -30, 30, 55);
+        imagen = new Image("file:src/main/java/org/gorditodev/juegodisparosdemo/img/mejora.png");
+        setFill(new ImagePattern(imagen));
         panel = PanelJuego.getPanel();
         bajar();
     }

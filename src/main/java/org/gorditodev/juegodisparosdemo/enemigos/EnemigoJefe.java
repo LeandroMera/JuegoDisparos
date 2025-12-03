@@ -1,12 +1,15 @@
 package org.gorditodev.juegodisparosdemo.enemigos;
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 
 public class EnemigoJefe extends EnemigoAbs {
     public EnemigoJefe() {
         super(150, -100, 200, 100, (Math.random() * 2) + dificultad, 30, 1500);// el random multiplica la velocidad
-        setFill(Color.PURPLE);
+        imagen = new Image("file:src/main/java/org/gorditodev/juegodisparosdemo/img/jefe.png");
+        setFill(new ImagePattern(imagen));
         bajar();
     }
 

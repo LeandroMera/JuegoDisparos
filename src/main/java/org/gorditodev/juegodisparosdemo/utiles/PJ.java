@@ -2,7 +2,9 @@ package org.gorditodev.juegodisparosdemo.utiles;
 
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Bounds;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import org.gorditodev.juegodisparosdemo.vista.PanelJuego;
@@ -14,12 +16,13 @@ public class PJ extends Rectangle {
     private boolean moviendoIzquierda, moviendoDerecha;
     private static Bounds posicion;
     private static int nDisparos = 3;
+    private Image imagen = new Image("file:src/main/java/org/gorditodev/juegodisparosdemo/img/vaca.png");
 
 
     public PJ() {
-        super(225, 700, 50, 50);
+        super(225, 660, 50, 80);
         panel = PanelJuego.getPanel();
-        setFill(Color.RED);// aveces sale erro por no importar la libreria -> import javafx.scene.paint.Color;
+        setFill(new ImagePattern(imagen));// aveces sale erro por no importar la libreria -> import javafx.scene.paint.Color;
         ponerEnAccion();
         animarPJ();
     }
