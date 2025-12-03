@@ -60,7 +60,7 @@ Este proyecto combina programación orientada a objetos, gestión de escenas, ti
   
   Animaciones con AnimationTimer
 
-🔥 Mejoras futuras sugeridas
+🔥 Mejoras futuras
 
   Sistema de niveles
   
